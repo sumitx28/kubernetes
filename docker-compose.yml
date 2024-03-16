@@ -1,0 +1,22 @@
+services:
+  sumit_cloud_cont_1:
+    build:
+      context: .
+      dockerfile: ./container_1/dockerfile
+    container_name: 'sumit_cloud_cont_1'
+    ports:
+      - '6000:6000'
+    volumes:
+      - .:/host_volume
+    depends_on:
+      - sumit_cloud_cont_2
+  
+  sumit_cloud_cont_2:
+    build:
+      context: .
+      dockerfile: ./container_2/dockerfile
+    container_name: 'sumit_cloud_cont_2'
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/host_volume
